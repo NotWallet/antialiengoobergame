@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://yypyfil3bdbu"]
+
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_nuney"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_by4iq"]
+
+[sub_resource type="Gradient" id="Gradient_amcr0"]
+offsets = PackedFloat32Array(0.928571)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6twwd"]
+gradient = SubResource("Gradient_amcr0")
+
+[sub_resource type="QuadMesh" id="QuadMesh_x1e2n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_57med"]
+size = Vector2(48, 41)
+
+[node name="Main" type="Node2D"]
+
+[node name="Environment" type="Node2D" parent="."]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Environment"]
+position = Vector2(251.5, 377.5)
+scale = Vector2(553, 805)
+mesh = SubResource("QuadMesh_by4iq")
+texture = SubResource("GradientTexture1D_6twwd")
+
+[node name="player" type="CharacterBody2D" parent="."]
+script = ExtResource("1_nuney")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="player"]
+position = Vector2(258, 592)
+scale = Vector2(47.5, 40.5)
+mesh = SubResource("QuadMesh_x1e2n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
+position = Vector2(258, 592.5)
+shape = SubResource("RectangleShape2D_57med")
