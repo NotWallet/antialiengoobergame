@@ -24,13 +24,13 @@ func _physics_process(delta):
 	else:
 		velocity.y = move_toward(velocity.y, 0, SPEED)
 	
-	if position.x < -230:
-		position.x = -230
-	if position.y < -575:
-		position.y = -575
-	if position.x > 215:
-		position.x = 215
-	if position.y > 135:
-		position.y = 135
+	if position.x < 0:
+		position.x = 0
+	if position.y < 0:
+		position.y = 0
+	if position.x > 500:
+		position.x = 500
+	if position.y > 750:
+		position.y = 750
 
 	move_and_slide()
