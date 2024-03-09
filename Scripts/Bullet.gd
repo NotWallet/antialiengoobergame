@@ -7,7 +7,6 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	position.y -= 10
-	print(position.y)
 	
 	if position.y < -700:
 		queue_free()

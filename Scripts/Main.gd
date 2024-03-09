@@ -8,7 +8,7 @@ extends Node2D
 
 @onready var player = $player
 
-var enemies = 5
+var enemies = 9
 
 var enemy_posX = [50,100,150,200,250,300,350,400,450]
 var enemy_posY = [50,100,50,100,50,100,50,100,50]
