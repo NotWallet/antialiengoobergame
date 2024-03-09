@@ -1,9 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://yypyfil3bdbu"]
+[gd_scene load_steps=10 format=3 uid="uid://yypyfil3bdbu"]
 
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_gu0pu"]
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_nuney"]
 [ext_resource type="PackedScene" uid="uid://c8d5x86fiwl3c" path="res://Scenes/bullet.tscn" id="2_a433a"]
-[ext_resource type="Script" path="res://Scripts/enemy.gd" id="4_btsdb"]
+[ext_resource type="PackedScene" uid="uid://cfpnjfn78dmm1" path="res://Scenes/enemy.tscn" id="3_owpy7"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_by4iq"]
 
@@ -17,12 +17,7 @@ gradient = SubResource("Gradient_amcr0")
 [sub_resource type="QuadMesh" id="QuadMesh_x1e2n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_57med"]
-size = Vector2(47, 40)
-
-[sub_resource type="QuadMesh" id="QuadMesh_6v8o3"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_pai4k"]
-size = Vector2(49, 47)
+size = Vector2(45.5, 47)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_gu0pu")
@@ -40,25 +35,13 @@ position = Vector2(250, 609)
 script = ExtResource("1_nuney")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="player"]
-scale = Vector2(47.5, 40.5)
+scale = Vector2(46.75, 47.25)
 mesh = SubResource("QuadMesh_x1e2n")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
 shape = SubResource("RectangleShape2D_57med")
 
-[node name="enemy" type="CharacterBody2D" parent="."]
-position = Vector2(262, 106)
-collision_layer = 3
-collision_mask = 3
-script = ExtResource("4_btsdb")
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="enemy"]
-scale = Vector2(46.5, 48.5)
-mesh = SubResource("QuadMesh_6v8o3")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy"]
-shape = SubResource("RectangleShape2D_pai4k")
-one_way_collision = true
+[node name="enemy" parent="." instance=ExtResource("3_owpy7")]
 
 [node name="bullet" parent="." instance=ExtResource("2_a433a")]
 position = Vector2(250, 609)
