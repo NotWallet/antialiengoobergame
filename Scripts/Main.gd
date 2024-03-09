@@ -21,7 +21,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	if enemies == 0:
+		$Upgrade.visible = true
 	
 func spawn_bullet():
 	var new_bullet = bullet.instantiate()

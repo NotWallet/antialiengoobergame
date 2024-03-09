@@ -1,12 +1,6 @@
 extends CharacterBody2D
 
-
-const SPEED = 300.0
-
-
-# Get the gravity from the project settings to be synced with RigidBody nodes.
-
-
+@export var speed = 300
 
 func _physics_process(delta):
 
@@ -14,15 +8,15 @@ func _physics_process(delta):
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var Xdirection = Input.get_axis("left", "right")
 	if Xdirection:
-		velocity.x = Xdirection * SPEED
+		velocity.x = Xdirection * speed
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.x = move_toward(velocity.x, 0, speed)
 		
 	var Ydirection = Input.get_axis("up", "down")
 	if Ydirection:
-		velocity.y = Ydirection * SPEED
+		velocity.y = Ydirection * speed
 	else:
-		velocity.y = move_toward(velocity.y, 0, SPEED)
+		velocity.y = move_toward(velocity.y, 0, speed)
 	
 	if position.x < 0:
 		position.x = 0

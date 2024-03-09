@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var health = 100
+@export var health = 100
 
 @onready var text = $TextEdit
 
@@ -12,9 +12,10 @@ func _physics_process(delta):
 	position.y += .25
 	text.text = str(health)
 	
-func die():
-	health-=25
+func die(damage):
+	health-=damage
 	
 	if health <= 0:
+		$"..".enemies -= 1
 		queue_free()
 

@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://yypyfil3bdbu"]
+[gd_scene load_steps=7 format=3 uid="uid://yypyfil3bdbu"]
 
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_gu0pu"]
 [ext_resource type="PackedScene" uid="uid://c8d5x86fiwl3c" path="res://Scenes/bullet.tscn" id="2_a433a"]
 [ext_resource type="PackedScene" uid="uid://di50uagnrntqo" path="res://Scenes/player.tscn" id="2_gvfdn"]
 [ext_resource type="PackedScene" uid="uid://5u1kxj0qkgyb" path="res://Scenes/environment.tscn" id="2_l34ks"]
 [ext_resource type="PackedScene" uid="uid://cfpnjfn78dmm1" path="res://Scenes/enemy.tscn" id="3_owpy7"]
+[ext_resource type="Script" path="res://Scripts/Upgrade.gd" id="6_1e2pj"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_gu0pu")
@@ -17,3 +18,36 @@ script = ExtResource("1_gu0pu")
 
 [node name="bullet" parent="." instance=ExtResource("2_a433a")]
 position = Vector2(250, 609)
+
+[node name="Upgrade" type="Node2D" parent="."]
+visible = false
+position = Vector2(250, 300)
+script = ExtResource("6_1e2pj")
+
+[node name="bullet damage" type="Button" parent="Upgrade"]
+offset_left = -207.0
+offset_top = -72.0
+offset_right = -115.0
+offset_bottom = 66.0
+text = "1.5x bullet 
+damage"
+
+[node name="bullet speed" type="Button" parent="Upgrade"]
+offset_left = -48.0
+offset_top = -69.0
+offset_right = 47.0
+offset_bottom = 69.0
+text = "2x bullet
+speed"
+
+[node name="player speed" type="Button" parent="Upgrade"]
+offset_left = 106.0
+offset_top = -70.0
+offset_right = 201.0
+offset_bottom = 68.0
+text = "2x player
+speed"
+
+[connection signal="pressed" from="Upgrade/bullet damage" to="Upgrade" method="_on_bullet_damage_pressed"]
+[connection signal="pressed" from="Upgrade/bullet speed" to="Upgrade" method="_on_bullet_speed_pressed"]
+[connection signal="pressed" from="Upgrade/player speed" to="Upgrade" method="_on_player_speed_pressed"]
