@@ -1,45 +1,17 @@
-[gd_scene load_steps=10 format=3 uid="uid://yypyfil3bdbu"]
+[gd_scene load_steps=6 format=3 uid="uid://yypyfil3bdbu"]
 
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_gu0pu"]
-[ext_resource type="Script" path="res://Scripts/player.gd" id="1_nuney"]
 [ext_resource type="PackedScene" uid="uid://c8d5x86fiwl3c" path="res://Scenes/bullet.tscn" id="2_a433a"]
+[ext_resource type="PackedScene" uid="uid://di50uagnrntqo" path="res://Scenes/player.tscn" id="2_gvfdn"]
+[ext_resource type="PackedScene" uid="uid://5u1kxj0qkgyb" path="res://Scenes/environment.tscn" id="2_l34ks"]
 [ext_resource type="PackedScene" uid="uid://cfpnjfn78dmm1" path="res://Scenes/enemy.tscn" id="3_owpy7"]
-
-[sub_resource type="QuadMesh" id="QuadMesh_by4iq"]
-
-[sub_resource type="Gradient" id="Gradient_amcr0"]
-offsets = PackedFloat32Array(0.928571)
-colors = PackedColorArray(0, 0, 0, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_6twwd"]
-gradient = SubResource("Gradient_amcr0")
-
-[sub_resource type="QuadMesh" id="QuadMesh_x1e2n"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_57med"]
-size = Vector2(45.5, 47)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_gu0pu")
 
-[node name="Environment" type="Node2D" parent="."]
+[node name="Environment" parent="." instance=ExtResource("2_l34ks")]
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="Environment"]
-position = Vector2(248.5, 378)
-scale = Vector2(503, 758)
-mesh = SubResource("QuadMesh_by4iq")
-texture = SubResource("GradientTexture1D_6twwd")
-
-[node name="player" type="CharacterBody2D" parent="."]
-position = Vector2(250, 609)
-script = ExtResource("1_nuney")
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="player"]
-scale = Vector2(46.75, 47.25)
-mesh = SubResource("QuadMesh_x1e2n")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
-shape = SubResource("RectangleShape2D_57med")
+[node name="player" parent="." instance=ExtResource("2_gvfdn")]
 
 [node name="enemy" parent="." instance=ExtResource("3_owpy7")]
 

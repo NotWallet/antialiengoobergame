@@ -1,16 +1,16 @@
 extends CharacterBody2D
 
+var health = 50
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
-
-# Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-
+func _ready():
+	pass
 
 func _physics_process(delta):
-	# Add the gravity.
-	pass
+	position.y += .25
+	
 func die():
-	queue_free()
+	health-=25
+	
+	if health <= 0:
+		queue_free()
 

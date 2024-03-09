@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://c8d5x86fiwl3c"]
 
-[ext_resource type="Script" path="res://Scripts/RigidBody2D.gd" id="1_g7kla"]
+[ext_resource type="Script" path="res://Scripts/Bullet.gd" id="1_qcuy3"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_x1e2n"]
 
@@ -8,12 +8,12 @@
 size = Vector2(9, 13)
 
 [node name="bullet" type="Node2D"]
-position = Vector2(0, 200)
+position = Vector2(600, 200)
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 2
-script = ExtResource("1_g7kla")
+script = ExtResource("1_qcuy3")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Area2D"]
 scale = Vector2(9, 13)
