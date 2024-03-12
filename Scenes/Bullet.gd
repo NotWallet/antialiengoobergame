@@ -1,9 +1,6 @@
-extends Area2D
+extends Node2D
 
 @onready var Bullets = get_node("/root/Main/Bullets")
-@onready var parent = get_parent().get_parent()
-
-
 
 
 
@@ -11,9 +8,7 @@ var bulletspeed = 7.0
 
 
 func _ready():
-	#if parent.name != "Main":
-		#bulletspeed = parent.BULLETSPEED
-	Bullets.add_child(self)
+
 	pass
 	
 
@@ -23,8 +18,10 @@ func _process(delta):
 	
 	if position.y < -700:
 		queue_free()
-	
-func _on_body_entered(body):
-	queue_free()
-	if body.has_method("die"):
-		body.die()
+
+
+
+func _on_area_body_entered(body):
+		queue_free()
+		if body.has_method("die"):
+			body.die()
