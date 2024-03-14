@@ -3,6 +3,7 @@ extends CharacterBody2D
 var health = 100
 
 @onready var text = $TextEdit
+@onready var Main = get_node("/root/Main/")
 
 func _ready():
 	pass
@@ -16,5 +17,10 @@ func die():
 	health-=25
 	
 	if health <= 0:
+		Main.activeenemies.erase(self)
+		if Main.activeenemies.is_empty() == true:
+			Main.start_wave()
 		queue_free()
+
+		
 

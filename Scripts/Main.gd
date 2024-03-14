@@ -16,6 +16,11 @@ var enemies = 5
 
 var enemy_posX = [50,100,150,200,250,300,350,400,450]
 var enemy_posY = [50,100,50,100,50,100,50,100,50]
+var Xlistdupe
+var Ylistdupe
+
+
+var activeenemies = []
 
 #var enemyspawnpresets = [[Vector2(50,50), Vector2(100,100),Vector2(150,50),Vector2(200,100),Vector2(250,50),Vector2(300,100),Vector2(350,50),Vector2(400,100),Vector2(450,50)]]
 # Called when the node enters the scene tree for the first time.
@@ -31,11 +36,13 @@ func _process(delta):
 	
 
 func start_wave():
-	var Xlistdupe = enemy_posX
-	var Ylistdupe = enemy_posY
+	if activeenemies.is_empty() != true:
+		activeenemies.clear()
+	Xlistdupe = enemy_posX.duplicate()
+	Ylistdupe = enemy_posY.duplicate()
 	for x in range(enemies):
-		var randposx = Xlistdupe[rand.randi_range(0,enemy_posX.size() - 1)]
-		var randposy = Ylistdupe[rand.randi_range(0,enemy_posY.size() - 1)]
+		var randposx = Xlistdupe.pick_random()
+		var randposy = Ylistdupe.pick_random()
 		Xlistdupe.erase(randposx)
 		Ylistdupe.erase(randposy)
 		spawn_enemy(Vector2(randposx, randposy))
@@ -45,6 +52,7 @@ func spawn_enemy(pos):
 	new_enemy.set_position(pos)
 	new_enemy.set_script(enemy_script)
 	add_child(new_enemy)
+	activeenemies.append(new_enemy)
 	
 
 
